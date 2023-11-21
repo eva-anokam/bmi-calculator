@@ -26,10 +26,7 @@ async function interpreteBMI(bmi, age) {
 }
 
 
-function calculateBMI(weight, height) {
-    const BMI = weight / (Math.pow(height, 2))
-    return Math.round(BMI)
-}
+
 
 window.addEventListener("DOMContentLoaded", () => {
     const calculateBtn = document.querySelector(".btn");

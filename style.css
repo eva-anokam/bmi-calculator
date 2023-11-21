@@ -88,6 +88,3 @@ textarea:not([rows]) {
   scroll-margin-block: 5ex;
 }
 
-svg{
-    width: 2rem;
-}
