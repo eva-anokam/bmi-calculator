@@ -8,9 +8,11 @@ const proxiedResult = new Proxy(result, {
         target[property] = value;
 
         //announce result change by sending out a custom event
-        window.dispatchEvent(new Event("resultchange"))
+        window.dispatchEvent(new CustomEvent("resultChanged", {detail: target}))
 
         return true;
     }
 })
+
+
 export default proxiedResult
