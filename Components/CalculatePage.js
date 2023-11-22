@@ -1,9 +1,6 @@
-function createElement(tagName, className, textContent) {
-    const newEl = document.createElement(tagName);
-    newEl.classList.add(className);
-    newEl.textContent = textContent;
-    return newEl
-}
+import { calculateBMI } from "../Services/Calculate.js";
+import proxiedResult from "../Services/Result.js";
+import { Router } from "../Services/Router.js";
 
 export class CalculatePage extends HTMLElement {
     constructor() {
@@ -15,7 +12,7 @@ export class CalculatePage extends HTMLElement {
         this.shadowDOM.appendChild(styles)
         //async load css
         async function loadCss() {
-            const req = await fetch("bmi-calculator/Components/CalculatePage.css")
+            const req = await fetch("../bmi-calculator/Components/CalculatePage.css")
             const css = await req.text()
             styles.textContent = css
         }
@@ -32,6 +29,7 @@ export class CalculatePage extends HTMLElement {
         }
         //TODO add proxy custom event 
         this.render()
+        this.setupEventListeners()
     }
     render() {
         const calculate = this.shadowDOM.querySelector("#calculate")
@@ -61,7 +59,7 @@ export class CalculatePage extends HTMLElement {
                 <label>
                     Weight(kg)
                     <span class="weight__value"></span>
-                    <input type="text" name="weight" id="weight" value="50">
+                    <input type="text" name="weight" id="weight" value=50>
                 </label>
                 <div class="svg__container">
                     <svg class="add" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g data-name="add" id="add-2"> <g> <line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="19" y2="5"></line> <line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="5" x2="19" y1="12" y2="12"></line> </g> </g> </g> </g></svg>
@@ -86,5 +84,57 @@ export class CalculatePage extends HTMLElement {
             <button class="btn">Calculate</button>
         `
     }
+    setupEventListeners() {
+        //calculate bmi
+        const calculateBtn = this.shadowDOM.querySelector('.btn');
+        const height = this.shadowDOM.querySelector("#height")
+        const heightValue = height.value;
+        const weight = this.shadowDOM.querySelector("#weight")
+        let weightValue = weight.value;
+        const weightAdd = this.shadowDOM.querySelector(".weight .add")
+        const weightMinus = this.shadowDOM.querySelector(".weight .minus")
+        const ageAdd = this.shadowDOM.querySelector(".age .add")
+        const ageMinus = this.shadowDOM.querySelector(".age .minus")
+
+
+        calculateBtn.addEventListener("click", (event) => {
+            event.preventDefault()
+            const bmi = calculateBMI(weightValue, heightValue);
+            proxiedResult.value = bmi;
+            Router.go("#/result")
+        });
+
+        //update input values
+        const displayHeight = this.shadowDOM.querySelector(".display__height");
+        displayHeight.textContent = heightValue
+        height.addEventListener("input", (event) => {
+            displayHeight.textContent = event.target.value
+        })
+
+        //add weight value
+        weightAdd.addEventListener("click", (event) => {
+            let weight = this.shadowDOM.querySelector("#weight")
+            weight.value = ++weight.value
+        })
+
+        //minus weight value
+        weightMinus.addEventListener("click", (event) => {
+            let weight = this.shadowDOM.querySelector("#weight")
+            weight.value = --weight.value
+        })
+
+        //add age value
+        ageAdd.addEventListener("click", (event) => {
+            let age = this.shadowDOM.querySelector("#age")
+            age.value = ++age.value
+        })
+
+        //minus age value
+        ageMinus.addEventListener("click", (event) => {
+            let age = this.shadowDOM.querySelector("#age")
+            age.value = --age.value
+        })
+    }
+    
 };
 customElements.define("calculate-page", CalculatePage)

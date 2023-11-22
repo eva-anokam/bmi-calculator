@@ -88,3 +88,6 @@ textarea:not([rows]) {
   scroll-margin-block: 5ex;
 }
 
+body{
+  background-color: red;
+}
