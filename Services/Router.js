@@ -2,7 +2,6 @@ import { CalculatePage } from "../Components/CalculatePage.js";
 import { ResultPage } from "../Components/ResultPage.js";
 import { InterpretationPage } from "../Components/InterpretationPage.js";
 import proxiedResult from "./Result.js";
-import { calculateFirst } from "./CalculateFirst.js";
 export const Router = {
     init() {
         const links = document.querySelectorAll(".link");
@@ -32,16 +31,7 @@ export const Router = {
                 pageElement = document.createElement("calculate-page");
                 break;
             case "#/result":
-                if (proxiedResult.value === null) {
-                    alert("Calculate BMI first to view result")
-                    pageElement = document.createElement("p")
-                    pageElement.innerHTML = `
-                        <a href="" class = "calculate-first">Calculate BMI </a>
-                    `
-                    
-                } else {
                     pageElement = document.createElement("result-page");  
-                }
                 break;
             case "#/interpretation":
                 pageElement = document.createElement("interpretation-page");
@@ -57,7 +47,6 @@ export const Router = {
             main.appendChild(pageElement);
             window.scrollX = 0;
             window.scrollY = 0;
-            calculateFirst()
         } else {
             main.textContent = "No page element found"
         }

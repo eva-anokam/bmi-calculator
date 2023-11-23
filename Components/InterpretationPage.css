@@ -1,0 +1,33 @@
+:root{
+    --clr-primary: hsl(230,53%,8%);
+    --clr-secondary: hsl(237, 28%, 16%);
+    --clr-accent: hsl(342, 84%, 50%);
+    --clr-text: hsl(0, 0%, 99%);
+    --clr-gray: hsl(225, 7%, 32%);
+
+    --ff-primary: 'Oxygen', sans-serif;
+    --ff-secondary: 'Oxygen Mono', monospace;
+
+    --spacer: 1rem;
+}
+#interpretation{
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    border-radius: 10px;
+    background-color: var(--clr-secondary);
+}
+h2{
+    text-align: center;
+    font-weight: bold;
+    font-family: var(--ff-secondary);
+    margin: 0;
+    margin-bottom: auto;
+}
+a{
+    color: var(--clr-text);
+    transition: all .2s;
+}
+a:hover{
+    color: var(--clr-accent);
+}

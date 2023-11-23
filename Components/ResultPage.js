@@ -9,6 +9,15 @@ export class ResultPage extends HTMLElement {
         this.shadowDOM = this.attachShadow({ mode: "open" });
 
         //load css
+        const styles = document.createElement("style")
+        this.shadowDOM.appendChild(styles)
+
+        async function loadCSS() {
+            const req = await fetch("../bmi-calculator/Components/ResultPage.css");
+            const css = await req.text()
+            styles.textContent = css
+        }
+        loadCSS()
     }
     //define what happens when the custom element is connected to the DOM
     connectedCallback() {
@@ -22,6 +31,12 @@ export class ResultPage extends HTMLElement {
 
         this.render(); //initial render
         this.setupEventListeners()
+        //dispaly result link
+        if (proxiedResult.value !== null) {
+            const resultLink = document.querySelector(".result")
+
+            resultLink.removeAttribute("hidden")
+        }
         //add possible proxy
         window.addEventListener("resultChanged", (event) => {
             const newValue = event.detail.value;
@@ -38,9 +53,11 @@ export class ResultPage extends HTMLElement {
              <h2>Your result</h2>
             <div class="result-container">
                 <p>${proxiedResult.value}</p>
+                </div>
+            <div class="result-btns">
                 <a href="" class="go-to-interprete">See the interpretation</a>
-            </div>
             <a href="" class="re-calculate">Re-calculate</a>
+            </div>
         `;
     }
     setupEventListeners() {

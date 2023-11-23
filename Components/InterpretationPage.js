@@ -4,7 +4,17 @@ export class InterpretationPage extends HTMLElement {
         super()
 
         //define shadowDOM
-        this.shadowDOM = this.attachShadow({mode: "open"})
+        this.shadowDOM = this.attachShadow({ mode: "open" })
+        
+        const styles = document.createElement("style")
+        this.shadowDOM.appendChild(styles)
+
+        async function loadCss() {
+            const req = await fetch("../bmi-calculator/Components/InterpretationPage.css")
+            const css = await req.text()
+            styles.textContent = css
+        }
+        loadCss()
         
     }
     //define how the template will be rendered

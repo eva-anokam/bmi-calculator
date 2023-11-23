@@ -1,4 +1,107 @@
+:root{
+    --clr-primary: hsl(230,53%,8%);
+    --clr-secondary: hsl(237, 28%, 16%);
+    --clr-accent: hsl(342, 84%, 50%);
+    --clr-text: hsl(0, 0%, 99%);
+    --clr-gray: hsl(225, 7%, 32%);
+
+    --ff-primary: 'Oxygen', sans-serif;
+    --ff-secondary: 'Oxygen Mono', monospace;
+
+    --spacer: 1rem;
+}
+*{
+    box-sizing: border-box;
+}
 
 svg{
     width: 2rem;
+}
+section{
+    display: grid;
+    place-items: center;
+}
+#calculate{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    max-width: 400px;
+    margin: 2rem auto;
+    gap: 2rem;
+}
+.heading{
+    grid-column: span 2;
+    font-family: var(--ff-secondary);
+    font-size: 2rem;
+}
+.gender{
+    grid-column:  span 1;
+}
+div{
+    background-color: var(--clr-secondary);
+    width: 100%;
+    text-align: center;
+    padding-block: 1rem;
+    border-radius: 10px;
+}
+.active{
+    background-color: #4c4f58 ;
+}
+.height{
+    grid-column: span 2;
+    padding-inline: 3rem;
+}
+.height label{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem 0;
+}
+
+.display__height{
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: var(--ff-secondary);
+}
+
+.weight, .age{
+    grid-column:  span 1;
+    padding-inline: 10px;
+}
+.weight label, .age label{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.weight input, .age input{
+    padding: .5em;
+    border-radius: 5px;
+    font-family: var(--ff-primary);
+}
+.weight svg, .age svg{
+    background-color: #4c4f58 ;
+    padding: .25rem;
+    border-radius: 50%;
+}
+.svg__container{
+    padding-bottom: 0px;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+
+.btn{
+    grid-column:  span 2;
+    width: 100%;
+    border: none;
+    padding: 1rem 0;
+    font-size: 1.25rem;
+    background-color: var(--clr-accent);
+    color: var(--clr-text);
+    border-radius: 10px;
+    transition: all .2s;
+}
+.btn:hover{
+    background-color: var(--clr-secondary);
 }
