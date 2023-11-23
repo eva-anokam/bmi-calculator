@@ -22,12 +22,19 @@ section{
     place-items: center;
 }
 #calculate{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+}
+.calculate-container{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    justify-content: center;
-    max-width: 400px;
-    margin: 2rem auto;
-    gap: 2rem;
+    place-items: center;
+    width: 100%;
+    gap: 1rem;
+    background-color: var(--clr-primary);
 }
 .heading{
     grid-column: span 2;
@@ -39,7 +46,7 @@ section{
 }
 div{
     background-color: var(--clr-secondary);
-    width: 100%;
+    width: calc(100% - 1rem);
     text-align: center;
     padding-block: 1rem;
     border-radius: 10px;
@@ -66,7 +73,7 @@ div{
 
 .weight, .age{
     grid-column:  span 1;
-    padding-inline: 10px;
+    /* padding-inline: 10px; */
 }
 .weight label, .age label{
     display: flex;
@@ -93,7 +100,7 @@ div{
 
 .btn{
     grid-column:  span 2;
-    width: 100%;
+    width: calc(100% - 1rem);
     border: none;
     padding: 1rem 0;
     font-size: 1.25rem;
