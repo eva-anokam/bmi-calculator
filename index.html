@@ -4,20 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="app.js" defer type="module"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen+Mono&family=Oxygen:wght@400;700&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="./Components/CalculatePage.css" as="style" />
     <title>BMI Calculator By Eva Anokam</title>
 </head>
 <body>
     <header>
         <nav>
-            <ul>
+            <a href="index.html" class="logo">
+                    <svg viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" fill="#fafafa" stroke="#fafafa"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><defs><style>.cls-1{fill:none;stroke:#fafafa;stroke-miterlimit:10;stroke-width:1.91px;}</style></defs><rect class="cls-1" x="1.5" y="1.5" width="21" height="21" rx="1.91"></rect><path class="cls-1" d="M5.32,7.23c4.17-3.82,9.19-3.82,13.36,0l-1.91,2.86a11.51,11.51,0,0,0-9.54,0Z"></path><line class="cls-1" x1="12" y1="6.27" x2="12" y2="9.14"></line><line class="cls-1" x1="12" y1="12.95" x2="12" y2="19.64"></line></g></svg>
+                </a>
+            <ul class="nav__links">
                  <li class="link" ><a href="#/calculate">Calculator</a></li>
-                 <li class="link"><a href="#/result">Result</a></li>
+                 <li class="link result" hidden><a href="#/result">Result</a></li>
                  <li class="link"><a href="#/interpretation">Interpretation</a></li>
             </ul>
         </nav>
     </header>
     <main>
+        <section class="home ">
+            <div class="container flow-content">
+                <h2>Understanding BMI</h2>
+                <p>Body Mass Index (BMI) is a numerical measure derived from a person's weight and height. It is a useful tool that helps in assessing whether an individual is underweight, normal weight, overweight, or obese, providing a quick estimation of body fat.</p>
+                <h3>Benefits of Monitoring BMI:</h3>
+                <ul>
+                  <li>Helps assess health risks associated with weight</li>
+                  <li>Aids in understanding weight-related health conditions</li>
+                  <li>Provides a baseline for setting fitness and wellness goals</li>
+                  <li>Assists healthcare professionals in planning appropriate interventions</li>
+                </ul>
+                
+                <p>It's important to note that while BMI is a useful initial indicator of weight status, it does not account for factors such as muscle mass, bone density, and overall body composition. Therefore, it's recommended to consult with a healthcare professional for a comprehensive assessment.</p>
+            </div>
+
+
+  
+</section>
+
     </main>
 
     <template id="calculate-page-template">

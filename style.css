@@ -8,6 +8,11 @@ Custom properties
     --clr-secondary: hsl(237, 28%, 16%);
     --clr-accent: hsl(342, 84%, 50%);
     --clr-text: hsl(0, 0%, 99%);
+
+    --ff-primary: 'Oxygen', sans-serif;
+    --ff-secondary: 'Oxygen Mono', monospace;
+
+    --spacer: 1rem;
 }
 /* 
 ---------------
@@ -45,6 +50,9 @@ ol[role='list'] {
 body {
   min-height: 100vh;
   line-height: 1.5;
+  background-color: var(--clr-primary);
+  color: var(--clr-text);
+  font-family: var(--ff-primary);
 }
 
 /* Set shorter line heights on headings and interactive elements */
@@ -88,6 +96,95 @@ textarea:not([rows]) {
   scroll-margin-block: 5ex;
 }
 
-body{
-  background-color: red;
+.flow-content > * + * {
+  margin-top: var(--flow-space, var(--spacer));
+}
+
+/* 
+---------------
+Utility classes
+----------------
+ */
+
+.flow-content > * + * {
+  margin-top: var(--flow-space, var(--spacer));
+}
+
+.flow-content--lg {
+  --flow-space: 3rem;
+}
+.container {
+  padding: 0 var(--spacer);
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+/* 
+---------------
+Navbar
+----------------
+ */
+
+header{
+  padding: 1rem;
+}
+nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo svg{
+  width: 2rem;
+}
+.nav__links{
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.link{
+  list-style-type: none;
+}
+
+.link a{
+  text-decoration: none;
+  padding: .5rem 1rem;
+}
+
+.logo:hover, .logo:focus{
+  color: var(--clr-accent);
+}
+
+a:hover, a:focus{
+  color: var(--clr-accent);
+}
+svg{
+  width: 2rem;
+}
+
+/* 
+---------------
+Home
+----------------
+ */
+
+.home{
+  padding: 2rem;
+}
+
+.home h2, .home h3{
+  font-family: var(--ff-secondary);
+}
+.home h3{
+  margin-top: 3rem;
+}
+.home div{
+  background-color: var(--clr-secondary);
+  padding-block: 2rem;
+  padding-inline: 2rem;
+  border-radius: 12px;
+  
 }
