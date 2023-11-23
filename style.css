@@ -171,9 +171,7 @@ Home
 ----------------
  */
 
-.home{
-  padding: 2rem;
-}
+
 
 .home h2, .home h3{
   font-family: var(--ff-secondary);
@@ -186,5 +184,5 @@ Home
   padding-block: 2rem;
   padding-inline: 2rem;
   border-radius: 12px;
-  
+  max-width: 600px;
 }
