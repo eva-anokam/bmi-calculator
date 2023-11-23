@@ -92,7 +92,7 @@ export class CalculatePage extends HTMLElement {
         const height = this.shadowDOM.querySelector("#height")
         const heightValue = height.value;
         const weight = this.shadowDOM.querySelector("#weight")
-        let weightValue = weight.value;
+        const weightValue = weight.value;
         const weightAdd = this.shadowDOM.querySelector(".weight .add")
         const weightMinus = this.shadowDOM.querySelector(".weight .minus")
         const ageAdd = this.shadowDOM.querySelector(".age .add")
@@ -101,6 +101,8 @@ export class CalculatePage extends HTMLElement {
 
         calculateBtn.addEventListener("click", (event) => {
             event.preventDefault()
+            const weightValue = weight.value;
+            const heightValue = height.value;
             const bmi = calculateBMI(weightValue, heightValue);
             proxiedResult.value = bmi;
             Router.go("#/result")
